@@ -26,6 +26,16 @@ Make sure the following tools are installed and available in your `$PATH`:
 
 ## Installation
 
+### Without cloning (recommended)
+
+You can install directly from the repository using `cargo install`:
+
+```bash
+cargo install --git https://github.com/matheus-alvs01dev/print-script.git
+```
+
+### From a local clone
+
 ```bash
 # Clone the repository
 git clone https://github.com/matheus-alvs01dev/print-script.git
@@ -35,7 +45,7 @@ cd print-script
 cargo install --path .
 ```
 
-Then run the installer once:
+After installation, run the installer once:
 
 ```bash
 print-script
