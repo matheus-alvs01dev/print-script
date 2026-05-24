@@ -1,2 +1,2 @@
 #!/bin/bash
-grim -g "$(slurp)" - | satty --filename
+grim -t ppm - | satty --filename - --fullscreen --initial-tool crop
