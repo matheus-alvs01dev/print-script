@@ -3,5 +3,5 @@
 version = 4
 
 [[package]]
-name = "print-script"
+name = "print-satty"
 version = "0.1.0"

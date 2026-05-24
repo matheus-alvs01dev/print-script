@@ -1,9 +1,9 @@
 [package]
-name = "print-script"
+name = "print-satty"
 version = "0.1.0"
 edition = "2024"
-description = "Install print-satty.sh screenshot script to cargo bin directory"
+description = "Wayland screenshot helper using grim, slurp, satty and wl-clipboard"
 
 [[bin]]
-name = "print-script"
+name = "print-satty"
 path = "src/main.rs"
