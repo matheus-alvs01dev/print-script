@@ -1,0 +1,9 @@
+[package]
+name = "print-script"
+version = "0.1.0"
+edition = "2026"
+description = "Install print-satty.sh screenshot script to cargo bin directory"
+
+[[bin]]
+name = "print-script"
+path = "src/main.rs"
