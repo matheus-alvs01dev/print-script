@@ -1,20 +1,35 @@
-use std::process::{Command, Stdio};
+use std::env;
+use std::process::{Command, exit};
 
-const SCRIPT: &str = include_str!("../print-satty.sh");
+const GRIM_CMD: &str = "/usr/bin/grim -t ppm -";
+const SATTY_ARGS: &str = "--filename - --fullscreen --initial-tool crop";
 
-fn main() {
-    let mut child = Command::new("bash")
+fn build_command_string() -> String {
+    let home = env::var("HOME").expect("Could not find HOME environment variable");
+    
+    format!(
+        "{} | GSK_RENDERER=cairo {}/.cargo/bin/satty {}", 
+        GRIM_CMD, 
+        home, 
+        SATTY_ARGS
+    )
+}
+
+fn execute_command(script: &str) {
+    let mut child = Command::new("sh")
         .arg("-c")
-        .arg(SCRIPT)
-        .stdin(Stdio::inherit())
-        .stdout(Stdio::inherit())
-        .stderr(Stdio::inherit())
+        .arg(script)
         .spawn()
-        .expect("Failed to start bash process");
+        .expect("Failed to start process");
 
-    let status = child.wait().expect("Failed to wait on bash process");
+    let status = child.wait().expect("Failed to wait on process");
 
     if !status.success() {
-        std::process::exit(status.code().unwrap_or(1));
+        exit(status.code().unwrap_or(1));
     }
+}
+
+fn main() {
+    let script = build_command_string();
+    execute_command(&script);
 }
